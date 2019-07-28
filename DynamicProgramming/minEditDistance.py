@@ -29,7 +29,7 @@ def editDistance(m, n):
 
 def main():
     print("Min-Edit-Distance:" +
-          str(editDistance("AAHIL", "JACKASS")))
+          str(editDistance("AAHIL", "JACKSON")))
 
 
 if __name__ == "__main__":
