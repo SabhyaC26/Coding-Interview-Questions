@@ -1,3 +1,7 @@
+"""
+Return the longest common subsequence from two given strings.
+"""
+
 def lcsDP(str1, str2):
 
     m = len(str1)
