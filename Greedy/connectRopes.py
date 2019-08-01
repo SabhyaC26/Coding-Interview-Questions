@@ -1,5 +1,6 @@
 import queue
 
+# method used to find the min cost of connecting many pieces of ropes
 def connectRopes(ropes):
     ropesPQ = queue.PriorityQueue(maxsize=0)
     for rope in ropes:
