@@ -1,16 +1,18 @@
 """
-Given a set S of activities with start time and finish time of each activity, find the maximum number of activities that can be performed by a single person assuming that a person can only work on a single activity at a time.
+Given a set S of activities with start time and finish time of each activity, 
+find the maximum number of activities that can be performed by a single person 
+assuming that a person can only work on a single activity at a time.
 """
 
-
+# unnecessary but makes code less ambigous
 def getStart(pair):
     return pair[0]
 
-
+# same as above
 def getEnd(pair):
     return pair[1]
 
-
+# removes all conflicting intervals for a given interval
 def removeConflicts(activity, lst):
     lst.remove(activity)
     toRemove = []
@@ -21,7 +23,7 @@ def removeConflicts(activity, lst):
     for pair in toRemove:
         lst.remove(pair)
 
-
+# greedy algo
 def getMaxActivities(activities):
     maxSet = []
     while len(activities) != 0:
