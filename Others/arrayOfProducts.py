@@ -22,10 +22,6 @@ def easySol(arr):
         arr[i] = int(total/val)
     return arr
 
-# follow up - can't use division
-def hardSol(arr):
-    pass
-
 def main():
     arr = [1, 2, 3, 4, 5]
     print(easySol(arr))
