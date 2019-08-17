@@ -1,36 +1,29 @@
-def fibTD(n, lookup):
+def fibTopDown(n, lookup):
     # Base Case
     if n == 0 or n == 1:
         lookup[n] = n
 
-    # if the value is not calculated previously then calculate it
+    # if the value is not calculated then do it
     if lookup[n] is None:
-        lookup[n] = fibTD(n-1, lookup) + fibTD(n-2, lookup)
+        lookup[n] = fibTopDown(n-1, lookup) + fibTopDown(n-2, lookup)
 
-    # return the value corresponding to that value of n
+    # return the corresponding value if n is calculated already
     return lookup[n]
 
 
-def fibBU(n):
-
-    # array declration
-    f = [0]*(n+1)
-
-    # base case
-    f[1] = 1
-
-    # driver of the functio
+def fibBotUp(n):
+    M = [0 for i in range(n+1)]
+    M[1] = 1
     for i in range(2, n+1):
-        f[i] = f[i-1] + f[i-2]
-
-    return f[n]
+        M[i] = M[i-1] + M[i-2]
+    return M[i]
 
 
 def main():
     n = 20
-    lookup = [None] * (101)
-    print("Fibonacci number for TD is ", fibTD(n, lookup))
-    print("Fibonacci number for BU is ", fibBU(n))
+    lookup = [None for i in range(101)]
+    print("Fibonacci number for TD is ", fibTopDown(n, lookup))
+    print("Fibonacci number for BU is ", fibBotUp(n))
 
 
 if __name__ == "__main__":
