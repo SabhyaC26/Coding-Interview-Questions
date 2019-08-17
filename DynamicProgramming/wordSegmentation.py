@@ -29,15 +29,15 @@ def wordSegRec(s, words):
 # now we do a DP approach
 
 def wordSegDP(s, words):
-    pass
+    # TODO
 
 
 if __name__ == "__main__":
     d = {'i', 'like', 'sam', 'sung', 'samsung', 'mobile', 'ice',
          'cream', 'icecream', 'man', 'go', 'mango', 'and'}
-    print(wordSegRec("ilikesamsung", d))
-    print(wordSegRec("iiiiiiii", d))
-    print(wordSegRec("", d))
-    print(wordSegRec("ilikelikeimangoiii", d))
-    print(wordSegRec("samsungandmango", d))
-    print(wordSegRec("samsungandmangok", d))
+    print(wordSegDP("ilikesamsung", d))
+    print(wordSegDP("iiiiiiii", d))
+    print(wordSegDP("", d))
+    print(wordSegDP("ilikelikeimangoiii", d))
+    print(wordSegDP("samsungandmango", d))
+    print(wordSegDP("samsungandmangok", d))
