@@ -15,7 +15,10 @@ def getOnesSubMtxDim(M):
         OPT[x][0] = M[x][0]
     for i in range(1, rows):
         for j in range(1, cols):
-            OPT[i][j] = min(OPT[i-1][j], OPT[i][j-1], OPT[i-1][j-1]) + 1
+            if M[i][j] == 1:
+                OPT[i][j] = min(OPT[i-1][j], OPT[i][j-1], OPT[i-1][j-1]) + 1
+            else:
+                OPT[i][j] = 0
     return max(max(OPT))
 
 
