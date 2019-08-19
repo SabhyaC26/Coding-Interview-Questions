@@ -26,15 +26,22 @@ def minJumpsRec(arr, startIndex, endIndex):
 
 
 def minJumpsDP(arr):
+
+    # if the start index is 0 we can't go anywhere
     if arr[0] == 0:
         return float('inf')
+
     startIndex = 0
-    endIndex = len(arr)-1
-    OPT = [0 for i in range(endIndex+1)]
-    for i in range(1, endIndex+1):
+    endIndex = len(arr)
+
+    # init OPT array
+    OPT = [0 for i in range(endIndex)]
+
+    for i in range(1, endIndex):
         OPT[i] = float('inf')
         for j in range(0, i):
-            if i <= j + arr[j] and OPT[j] != float('inf'):
+            # if i is reachable from j
+            if i <= j + arr[j]:
                 OPT[i] = min(OPT[i], OPT[j] + 1)
     return OPT[-1]
 
