@@ -7,6 +7,11 @@ Link: https://leetcode.com/problems/3sum/
 """
 
 
+# checks if two given triplets are equal
+def checkEqual(trip1, trip2):
+    return trip1.sort() == trip2.sort()
+
+
 def threeSum():
     pass
 
