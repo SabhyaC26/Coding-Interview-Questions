@@ -33,12 +33,17 @@ def revLinkedListIter(head):
     while stack:
         cur.next = ListNode(stack.pop())
         cur = cur.next
-    return newHead, newHead.next
+    return newHead
 
 
 # recursive version
-def revLinkedListRec():
-    pass
+def revLinkedListRec(head):
+    if head is None or head.next is None:
+        return head
+    p = revLinkedListRec(head.next)
+    head.next.next = head
+    head.next = None
+    return p
 
 
 if __name__ == "__main__":
@@ -55,3 +60,4 @@ if __name__ == "__main__":
     node4.next = node5
 
     print(revLinkedListIter(node1))
+    print(revLinkedListRec(node1))
