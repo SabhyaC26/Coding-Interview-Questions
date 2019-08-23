@@ -7,21 +7,26 @@ LeetCode Rating: Easy
 
 
 def twoSum(nums, target):
-    complements = {}
+    reverseLookup = {}
     for i in range(len(nums)):
-        complements[nums[i]] = i
+        reverseLookup[nums[i]] = i
     for i in range(len(nums)):
-        comp = target - nums[i]
-        if comp in complements and complements[comp] != i:
-            return [i, complements[comp]]
+        complement = target - nums[i]
+        if complement in reverseLookup and reverseLookup[complement] != i:
+            return [i, reverseLookup[complement]]
 
 
-# TODO
 def twoSumOnePass(nums, target):
-    pass
+    reverseLookup = {}
+    for i in range(len(nums)):
+        complement = target - nums[i]
+        if complement in reverseLookup:
+            return [i, reverseLookup[complement]]
+        reverseLookup[nums[i]] = i
 
 
 if __name__ == "__main__":
     nums = [2, 7, 11, 15]
-    target = 10
+    target = 13
     print(twoSum(nums, target))
+    print(twoSumOnePass(nums, target))
