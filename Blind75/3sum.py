@@ -8,7 +8,7 @@ Link: https://leetcode.com/problems/3sum/
 
 
 # TODO
-def threeSumImprove(nums):
+def threeSumImproved(nums):
     pass
 
 
@@ -47,4 +47,4 @@ def threeSum(nums):
 
 if __name__ == "__main__":
     A = [3, 0, -2, -1, 1, 2]
-    print(threeSumImprove(A))
+    print(threeSum(A))
