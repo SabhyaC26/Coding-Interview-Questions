@@ -61,5 +61,10 @@ def onePass(head, n):
         cur = cur.next
         counter += 1
     target = counter - n
-    indices[target].next = indices[target].next.next
+    print(indices)
+    if target == 0:
+        return head.next
+    n = indices[target-1]
+    n.next = n.next.next
+    indices[target-1].next = n.next
     return head
