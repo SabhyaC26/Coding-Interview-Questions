@@ -9,13 +9,17 @@ What’s the maximum value you can steal from the block?
 
 
 def getMaxRob(houses):
-    n = len(houses)
-    M = [0 for i in range(n)]
-    M[0] = houses[0]
-    M[1] = houses[1]
-    for j in range(2, n):
-        M[j] = max(houses[j] + M[j-2], M[j-1])
-    return M[n-1]
+    if not houses:
+        return 0
+    if len(houses) <= 2:
+        return max(houses)
+    numHouses = len(houses)
+    OPT = [0 for i in range(numHouses)]
+    OPT[0] = houses[0]
+    OPT[1] = max(houses[0:2])
+    for j in range(2, numHouses):
+        OPT[j] = max(houses[j] + OPT[j-2], OPT[j-1])
+    return OPT[-1]
 
 
 if __name__ == "__main__":
