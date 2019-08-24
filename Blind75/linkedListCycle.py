@@ -28,6 +28,18 @@ def linearSpace(head):
     return False
 
 
-# constant space soution
+# constant space soution (this solution was very cool!)
 def constSpace(head):
-    pass
+    if head is None or head.next is None:
+        return False
+    fast = head
+    slow = head
+    while fast is not None:
+        fast = fast.next
+        if fast is None:
+            return False
+        fast = fast.next
+        slow = slow.next
+        if fast == slow:
+            return True
+    return False
