@@ -1,7 +1,7 @@
 """
 Given a linked list, determine if it has a cycle in it.
 
-LeetCode Rating: Easy
+LeetCode Rating: Easy (Const Space is Medium)
 
 Link:
 """
