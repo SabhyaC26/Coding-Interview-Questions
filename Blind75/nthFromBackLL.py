@@ -41,8 +41,25 @@ def twoPass(head, n):
     return head
 
 
-# this is when things get fun!
-
-
-def onePass():
-    pass
+# this is when things get fun! (two pass is faster on LeetCode somehow!)
+def onePass(head, n):
+    if head.next is None:
+        return None
+    if head.next.next is None:
+        if n == 1:
+            head.next = None
+            return head
+        if n == 2:
+            return head.next
+    cur = head
+    # what if we store the index of a node in a hashmap
+    indices = {}
+    cur = head
+    counter = 0
+    while cur is not None:
+        indices[counter] = cur
+        cur = cur.next
+        counter += 1
+    target = counter - n
+    indices[target].next = indices[target].next.next
+    return head
