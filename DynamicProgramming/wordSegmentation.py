@@ -28,8 +28,12 @@ def wordSegRec(s, words):
 
 # now we do a DP approach
 
-def wordSegDP(s, words):
-    # TODO
+def wordBreakDP(s, words):
+    M = [False for i in range(len(s)+1)]
+    M[0] = True
+    for i in range(1, len(s)+1):
+        M[i] = any(s[j:i] in words and M[j] for j in range(i))
+    return M[-1]
 
 
 if __name__ == "__main__":
