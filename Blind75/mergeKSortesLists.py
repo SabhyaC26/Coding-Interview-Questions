@@ -1,3 +1,4 @@
+from heapq import heappush, heappop, heapreplace, heapify
 from queue import PriorityQueue
 """
 Merge K Sorted Lists
@@ -60,6 +61,30 @@ def mergeKLists(lists):
             trip = (lists[li][idx+1], li, idx+1)
             heap.put(trip)
     return merged
+
+
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+
+# EVEN HARDER - Merge K Sosted Linked Lists
+
+def mergeKLists(lists):
+    dummy = cur = ListNode(0)
+    heap = []
+    for i in range(len(lists)):
+        if lists[i]:
+            heapq.heappush(heap, (lists[i].val, i, lists[i]))
+    while heap:
+        node = heapq.heappop(heap)
+        idx = node[1]
+        cur.next = node[2]
+        cur = cur.next
+        if cur.next:
+            heapq.heappush(heap, (cur.next.val, idx, cur.next))
+    return dummy.next
 
 
 if __name__ == "__main__":
