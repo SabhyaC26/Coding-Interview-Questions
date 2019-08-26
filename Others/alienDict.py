@@ -13,26 +13,23 @@ Link: https://leetcode.com/problems/verifying-an-alien-dictionary/
 """
 
 
-# solution is slightly wrong - working on a fix
 def isAlienSorted(words, order):
-    # first create a reverse lookup table
-    revLookup = {}
-    for i in range(len(order)):
-        revLookup[order[i]] = i
-    # let's now give each word in words a lexographical rank
-    lex_ranks = []
-    smallest = words[0]
-    for word in words:
-        if len(word) < len(smallest):
-            smallest = word
-    for word in words:
-        lex = 0
-        for i in range(len(smallest)):
-            lex += (revLookup[word[i]]+1)/(i+1)
-        lex_ranks.append(lex)
-    for i in range(len(lex_ranks)-1):
-        if not (lex_ranks[i] <= lex_ranks[i+1]):
-            return False
+    order_index = {c: i for i, c in enumerate(order)}
+    for i in range(len(words) - 1):
+        w1 = words[i]
+        w2 = words[i+1]
+        # Find the first difference word1[k] != word2[k].
+        for k in range(min(len(w1), len(w2))):
+                    # If they compare badly, it's not sorted.
+            if w1[k] != w2[k]:
+                if order_index[w1[k]] > order_index[w2[k]]:
+                    return False
+                break
+        else:
+            # If we didn't find a first difference, the
+            # words are like ("mat", "matte").
+            if len(w1) > len(w2):
+                return False
     return True
 
 
