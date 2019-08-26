@@ -7,7 +7,7 @@ Given a sequence of words written in the alien language, and the order of the
 alphabet, return true if and only if the given words are sorted lexicographicaly
 in this alien language.
 
-LeetCode Rating: Easy
+LeetCode Rating: Easy (Not as easy as the other Leetcode Easy Qs)
 
 Link: https://leetcode.com/problems/verifying-an-alien-dictionary/
 """
