@@ -10,9 +10,9 @@ class TreeNode(object):
         self.right = None
 
 
-# recursive way - I don't like this very much
+# recursive way
 def isBST(root):
-    def helper(node, left=float('inf'), right=float('inf')):
+    def helper(node, left=float('-inf'), right=float('inf')):
         if not node:
             return True
 
@@ -25,3 +25,21 @@ def isBST(root):
         if not helper(node.left, val, left):
             return False
         return True
+
+
+# iterative DFS method
+def isBSTDFS(root):
+    if root is None:
+        return True
+
+    stack = [(root, float('-inf'), float('inf'))]
+    while stack:
+        root, lower, upper = stack.pop()
+        if not root:
+            continue
+        val = root.val
+        if val <= lower or val >= upper:
+            return False
+        stack.append((root.right, val, upper))
+        stack.append((root.left, lower, val))
+    return True
