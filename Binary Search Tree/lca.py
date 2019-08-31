@@ -10,10 +10,27 @@ class TreeNode(object):
         self.right = None
 
 
+def searchBST(root: TreeNode, val: int) -> TreeNode:
+    if root.val == val:
+        return True
+    if root and val < root.val:
+        return searchBST(root.left, val)
+    if root and val > root.val:
+        return searchBST(root.right, val)
+    return False
+
+
 def lowestCommonAncestor(root, p, q):
-    if (p.val < root.val and root.val < q.val) or (q.val < root.val and root.val < p.val):
+    if root == p or root == q:
         return root
-    if (p.val < root.val) and (q.val < root.val):
+    # cases --> p in left and q in right OR p in right and q in left
+    if searchBST(root.left, p.val) and searchBST(root.right, q.val):
+        return root.val
+    elif searchBST(root.right, p.val) and searchBST(root.left, q.val):
+        return root.val
+    # check if both are in left
+    elif searchBST(root.left, p.val) and searchBST(root.right. q.val):
         return lowestCommonAncestor(root.left, p, q)
-    if (p.val > root.val) and (q.val > root.val):
+    # check if both are in right
+    elif searchBST(root.right, p.val) and searchBST(root.right. q.val):
         return lowestCommonAncestor(root.right, p, q)
