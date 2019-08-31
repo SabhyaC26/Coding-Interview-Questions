@@ -12,7 +12,7 @@ def bstPaths(root):
     paths = []
     stack = []
     stack.append((root, str(root.val)))
-    while stack is not None:
+    while stack:
         node, path = stack.pop()
         if not node.left and not node.right:
             paths.append(path)
