@@ -18,5 +18,6 @@ def bstPaths(root):
             paths.append(path)
         if node.left:
             stack.append((node.left, path + '->' + str(node.left.val)))
-        if root.right:
+        if node.right:
             stack.append((node.right, path + '->' + str(node.right.val)))
+    return paths
