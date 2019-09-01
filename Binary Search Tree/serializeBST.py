@@ -6,6 +6,6 @@ class TreeNode(object):
 
 
 def serialize(root):
-    if root is None:
-        return "Null"
-    return str(root.val) + ',' + serialize(root.left) + serialize(root.right)
+    def post(root):
+        return post(root.left) + post(root.right) + [root.val] if root else []
+    return ' '.join(map(str, post(root)))
