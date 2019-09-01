@@ -7,7 +7,7 @@ class TreeNode(object):
 
 def desrialize(data):
     def helper(low=float('-inf'), high=float('inf')):
-        if not data or data[-1] < low or data[-1] > upper:
+        if not data or data[-1] < low or data[-1] > high:
             return None
 
         val = data.pop()
