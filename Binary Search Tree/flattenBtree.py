@@ -5,17 +5,18 @@ class TreeNode:
         self.right = None
 
 
-def flatten(root: TreeNode) -> None:
+def __init__(self):
+    self.prev = None
+
+
+def flatten(self, root: TreeNode) -> None:
     """
     Do not return anything, modify root in-place instead.
     """
     if root is None:
-        return
-    if root.left is not None:
-        root.next = root.left
-        if root.right is not None:
-            root.left.next = root.right
-        flatten(root.left)
-    elif root.right is not None:
-        root.next = root.right
-        flatten(root.right)
+        return None
+    self.flatten(root.right)
+    self.flatten(root.left)
+    root.right = self.prev
+    root.left = None
+    self.prev = root
