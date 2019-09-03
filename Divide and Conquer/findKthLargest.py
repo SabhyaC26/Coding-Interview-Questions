@@ -18,6 +18,3 @@ def findKthLargestHeap(nums, k):
         if len(h) > k:
             heapq.heappop(h)
     return h[0]
-
-
-# quickselect approach
