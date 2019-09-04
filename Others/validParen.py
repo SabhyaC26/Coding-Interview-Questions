@@ -1,18 +1,10 @@
 # '(', ')', '{', '}', '[' ']'
 def validParen(s):
     stack = []
+    match = {'(': ')', '{': '}', '[': ']'}
     for c in s:
-        if c == '(' or c == '{' or c == '[':
+        if c in match.keys():
             stack.append(c)
-        elif c == ')' or c == '}' or c == ']':
-            a = stack.pop()
-            if c == ')':
-                if a != '(':
-                    return False
-            elif c == '}':
-                if a != '{':
-                    return False
-            elif c == ']':
-                if a != '[':
-                    return False
-    return True
+        elif not stack or match[stack.pop()] != c:
+            return False
+    return len(stack) == 0
