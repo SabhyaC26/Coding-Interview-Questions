@@ -13,4 +13,5 @@ class TreeNode(object):
     def countNodes(self, root):
         return 1 + self.countNodes(root.right) + self.countNodes(root.left) if root else 0
 
-    # tricky way using bin search
+    # tricky way using bin search --> making use of the fact that the
+    # tree is a complete one
