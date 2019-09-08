@@ -87,6 +87,8 @@ def mergeKLists(lists):
     return dummy.next
 
 
+n
+
 if __name__ == "__main__":
     A = [1, 3, 5, 7]
     B = [2, 4, 6, 8, 10, 12]
