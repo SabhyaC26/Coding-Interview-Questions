@@ -17,3 +17,6 @@ class TreeNode(object):
     # tree is a complete one: this means that the kth level will have
     # 2^k nodes, except the last on, which will have 1-2^d where d is the
     # depth of the last level
+    def countNodes2(self, root):
+        # we know the tree has 2^d - 1 nodes till the last level
+        pass
