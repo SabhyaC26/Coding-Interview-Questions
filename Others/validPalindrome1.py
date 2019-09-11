@@ -9,7 +9,6 @@ def isPalindrome(s):
     for c in s:
         if c.isalnum():
             new_s += c
-    print(new_s)
     p1 = 0
     p2 = len(new_s)-1
     while p1 < p2:
