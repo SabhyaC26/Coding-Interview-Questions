@@ -1,5 +1,4 @@
 class Solution:
-
     def helper(self, arr, l, h, key):
         if l > h:
             return -1
