@@ -1,6 +1,6 @@
 class Solution(object):
     def __init__(self, arr):
-        prefixSum = [0 for _ in range(len(arr))]
+        prefixSum = [0 for _ in range(len(arr)+1)]
         prefixSum[0] = 0
         for i in range(1, len(arr)):
             if arr[i-1] == 1:
