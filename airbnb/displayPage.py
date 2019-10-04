@@ -12,14 +12,43 @@ the pages.
 Given an array of csv strings, output results separated by a blank line.
 """
 
+from collections import deque
+
 
 def paginate(results):
-    start = 0
-    end = 12
-    while True:
-        print(results[0:12])
-        if end > len(results):
-            break
+    pages = []
+    current_page = []
+    host_set = set()
+    buffer_queue = deque([])
+    for i in range(len(results)):
+        vals = results[i].split(',')
+        if vals[0] not in host_set and len(current_page) < 12:
+            current_page.append(results[i])
+            host_set.add(vals[0])
+        else:
+            buffer_queue.append(results[i])
+        if len(current_page) == 12:
+            pages.append(current_page)
+            current_page = []
+            host_set.clear()
+            new_buf_queue = deque([])
+            while len(buffer_queue) > 0:
+                elt = buffer_queue.popleft()
+                if elt.split(',')[0] not in host_set and len(current_page) < 12:
+                    current_page.append(elt)
+                    host_set.add(elt.split(',')[0])
+                else:
+                    new_buf_queue.append(elt)
+            buffer_queue = new_buf_queue
+
+    buffer_queue = list(buffer_queue)
+    if len(current_page) < 12:
+        rem = int(12 - len(current_page))
+        current_page = current_page + buffer_queue[0:rem]
+    pages.append(current_page)
+    if rem < len(buffer_queue):
+        pages.append(buffer_queue[rem:])
+    return pages
 
 
 if __name__ == "__main__":
@@ -55,5 +84,8 @@ if __name__ == "__main__":
         "29,22,2.1,SanJose",
         "30,23,1.1,SanJose"
     ]
-
-    paginate(A)
+    pages = paginate(A)
+    for page in pages:
+        for listing in page:
+            print(listing)
+        print()
